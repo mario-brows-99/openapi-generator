@@ -42,7 +42,6 @@ export function {{classname}}FromJSON(json: any): {{classname}} {
 }
 
 export function {{classname}}FromJSONTyped(json: any, ignoreDiscriminator: boolean): {{classname}} {
-    {{#hasVars}}
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -94,14 +93,9 @@ export function {{classname}}FromJSONTyped(json: any, ignoreDiscriminator: boole
         {{/isPrimitiveType}}
         {{/vars}}
     };
-    {{/hasVars}}
-    {{^hasVars}}
-    return json;
-    {{/hasVars}}
 }
 
 export function {{classname}}ToJSON(value?: {{classname}} | null): any {
-    {{#hasVars}}
     if (value === undefined) {
         return undefined;
     }
@@ -139,10 +133,6 @@ export function {{classname}}ToJSON(value?: {{classname}} | null): any {
         {{/isReadOnly}}
         {{/vars}}
     };
-    {{/hasVars}}
-    {{^hasVars}}
-    return value;
-    {{/hasVars}}
 }
 
 {{#hasEnums}}
